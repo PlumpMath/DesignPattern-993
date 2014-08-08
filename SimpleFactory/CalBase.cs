@@ -10,15 +10,55 @@ namespace SimpleFactory
         public double NumberA { get; set; }
         public double NumberB { get; set; }
 
-        protected abstract double GetResult();
+        public abstract double GetResult();
+        
     }
 
-
+    /// <summary>
+    /// 加法
+    /// </summary>
     public class CalAdd : CalBase
     {
-        protected override double GetResult()
+        public override double GetResult()
         {
-            return NumberA + NumberB;
+            return NumberA + NumberB; 
+        }
+    }
+
+    /// <summary>
+    /// 减法
+    /// </summary>
+    public class CalSub : CalBase
+    {
+        public override double GetResult()
+        {
+            return NumberA - NumberB;
+        }
+    }
+
+    /// <summary>
+    /// 乘法
+    /// </summary>
+    public class CalMul : CalBase
+    {
+        public override double GetResult()
+        {
+            return NumberA * NumberB;
+        }
+    }
+
+    /// <summary>
+    /// 除法
+    /// </summary>
+    public class CalDiv : CalBase
+    {
+        public override double GetResult()
+        {
+            if (NumberB == 0)
+            {
+                throw new Exception("除数不能为0");
+            }
+            return NumberA / NumberB;
         }
     }
 }
